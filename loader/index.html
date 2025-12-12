@@ -6,25 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    /* ========== BACKGROUND CONFIGURATION (EDIT HERE) ========== */
-    /* Change the URL to your preferred background image */
-    /* Example: background: url("AWQ.jpg") center/cover no-repeat fixed; */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: url("Awasyuy.jpg") center/cover no-repeat fixed;
-      /* Alternative backgrounds you can use by uncommenting one: */
-      /* background: url("https://images.unsplash.com/photo-1519681393784-d120267933ba") center/cover no-repeat fixed; */
-      /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) fixed; */
-      /* background: radial-gradient(circle at 10% 20%, rgb(87, 108, 117) 0%, rgb(37, 50, 55) 100%) fixed; */
-    }
-    /* ========== END BACKGROUND CONFIGURATION ========== */
-
     /* ========== THEME (edit colors here if you like) ========== */
     :root{
       --bg: #efe3db;                 /* outer background (warm nude) */
@@ -44,21 +25,12 @@
       margin:0;
       display:grid;
       place-items:center;
-      /* Original gradient background removed - now using background image */
+      background:
+        radial-gradient(1200px 800px at 15% -10%, rgba(255,255,255,.6), transparent 55%),
+        radial-gradient(1000px 700px at 85% 110%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(#f4ebe6, var(--bg));
       font-family: "Cormorant Garamond", "Georgia", serif;
       color: var(--ink);
-    }
-
-    /* Dark overlay for better text readability */
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.15);
-      z-index: -1;
     }
 
     /* ========== OUTER FRAME (golden with bevel) ========== */
@@ -71,7 +43,7 @@
         linear-gradient(145deg, var(--gold-1), var(--gold-2) 60%, #6e5326);
       padding:18px;
       box-shadow:
-        0 28px 60px rgba(0,0,0,.35),
+        0 28px 60px rgba(0,0,0,.25),
         inset 0 2px 0 rgba(255,255,255,.35),
         inset 0 -2px 0 rgba(0,0,0,.12);
       overflow:hidden;
@@ -93,7 +65,7 @@
       position:absolute; inset:26px;
       border-radius:14px;
       background:
-        radial-gradient(1200px 800px at 50% -10%, rgba(255,255,255,.85), transparent 50%),
+        radial-gradient(1200px 800px at 50% -10%, rgba(255,255,255,.6), transparent 50%),
         linear-gradient(#efe2da, var(--panel));
       box-shadow:
         inset 0 12px 30px rgba(255,255,255,.35),
@@ -101,7 +73,6 @@
       padding:46px 34px 52px;
       z-index:1;
       overflow:auto;
-      backdrop-filter: blur(2px);
     }
 
     /* ========== LACE EDGES (subtle, vertical) ========== */
@@ -233,7 +204,7 @@
 
         <!-- Manual download link -->
         <p class="details" style="margin-top:18px">
-          If the download didn't start, <a id="manualDownload" href="#" download>download manually</a>.
+          If the download didn’t start, <a id="manualDownload" href="#" download>download manually</a>.
         </p>
         <!-- ========= /EDIT ME ========= -->
       </div>
